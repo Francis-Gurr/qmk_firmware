@@ -15,7 +15,6 @@ enum custom_keycodes {
   COLMK,
   SYMB,
   NAV_NUM,
-  MACRO_FN,
   ADJUST,
 };
 
