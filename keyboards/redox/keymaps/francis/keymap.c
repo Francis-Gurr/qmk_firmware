@@ -35,7 +35,7 @@ enum custom_keycodes {
 #define UK_HASH   KC_NUHS
 #define UK_TILD   LSFT(KC_NUHS)
 #define UK_BSLS   KC_NUBS
-#define UK_PIPE   LSHT(KC_NUBS)
+#define UK_PIPE   LSFT(KC_NUBS)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
