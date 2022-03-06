@@ -21,12 +21,22 @@ enum custom_keycodes {
 };
 
 // Shortcut to make keymap more readable
+// Layer shortcuts
 #define DF_COLMK  DF(_COLMK)
 #define DF_QWRTY  DF(_QWERTY)
 #define MO_SYM    MO(_SYMB)
 #define MO_NVNM   MO(_NAV_NUM)
 #define MO_MACFN  MO(_MACRO_FN)
 #define TG_ADJST  TG(_ADJUST)
+
+// UK shortcuts
+#define UK_AT     LSFT(KC_QUOT)
+#define UK_GBP    LSFT(KC_3)
+#define UK_HASH   KC_NUHS
+#define UK_TILD   LSFT(KC_NUHS)
+#define UK_BSLS   KC_NUBS
+#define UK_PIPE   LSHT(KC_NUBS)
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -62,11 +72,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
      XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,                                            XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,XXXXXXX ,KC_AT   ,KC_MINS ,KC_LBRC ,XXXXXXX ,XXXXXXX ,                          XXXXXXX ,XXXXXXX ,KC_RBRC ,KC_PLUS ,KC_DLR  ,XXXXXXX ,XXXXXXX ,
+     XXXXXXX ,XXXXXXX ,UK_AT   ,KC_MINS ,KC_LBRC ,XXXXXXX ,XXXXXXX ,                          XXXXXXX ,XXXXXXX ,KC_RBRC ,KC_PLUS ,KC_DLR  ,UK_GBP  ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,KC_HASH ,KC_SLASH,KC_UNDS ,KC_LPRN ,KC_LT   ,XXXXXXX ,                          XXXXXXX ,KC_GT   ,KC_RPRN ,KC_EQL  ,KC_BSLS ,KC_ASTR ,XXXXXXX ,
+     XXXXXXX ,UK_HASH ,KC_SLASH,KC_UNDS ,KC_LPRN ,KC_LT   ,XXXXXXX ,                          XXXXXXX ,KC_GT   ,KC_RPRN ,KC_EQL  ,UK_BSLS ,KC_ASTR ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,KC_TILD ,KC_PERC ,KC_PIPE ,KC_LCBR ,XXXXXXX ,XXXXXXX ,XXXXXXX ,        XXXXXXX ,XXXXXXX ,XXXXXXX ,KC_RCBR ,KC_AMPR ,KC_CIRC ,KC_GRV  ,XXXXXXX ,
+     XXXXXXX ,UK_TILD ,KC_PERC ,UK_PIPE ,KC_LCBR ,XXXXXXX ,XXXXXXX ,XXXXXXX ,        XXXXXXX ,XXXXXXX ,XXXXXXX ,KC_RCBR ,KC_AMPR ,KC_CIRC ,KC_GRV  ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
      XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,     XXXXXXX ,    XXXXXXX ,XXXXXXX ,        XXXXXXX ,XXXXXXX ,    XXXXXXX ,     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
