@@ -7,13 +7,17 @@
 #define TG_QWRTY  TG(_QWERTY) // Toggle qwerty layer
 #define TG_MOUSE  TG(_MOUSE)  // Mouse layer on hold (momentary) or double tap (toggle)
 #define TT_FUN  TT(_FUN)      // Function layer on hold (momentary) or double tap (toggle)
+#define DF_ALPHA DF(_ALPHABET)
+#define DF_GAME1 DF(_GAME1)
+#define MO_GAME2 MO(_GAME2)
+#define MO_FUN MO(_FUNCTION)
 
 // Layer tap keys
-// #define R_MACRO LT(_MACROS, KC_R)           // Macros layer on hold, r on tap
-#define BSPC_NUM LT(_NUMBERS, KC_BACKSPACE) // Numbers layer on hold, backspace on tap
-#define ESC_SYM LT(_SYMBOLS, KC_ESCAPE)     // Symbols on hold, escape on tap
-#define ENT_SYM LT(_SYMBOLS, KC_ENTER)      // Symbols on hold, enter on tap
-#define SPC_NAV LT(_NAVIGATION, KC_SPACE)   // Navigation layer on hold, space on tap
+// #define R_MACRO LT(_MACROS, KC_R)        // Macros layer on hold, r on tap
+#define BSPC_SYM LT(_SYMBOLS, KC_BACKSPACE) // Symbols layer on hold, backspace on tap
+#define ESC_NUM LT(_NUMBERS, KC_ESCAPE)     // Numbers on hold, escape on tap
+#define ENT_NAV LT(_NAVIGATION, KC_ENTER)   // Navigation on hold, enter on tap
+#define SPC_SYM LT(_SYMBOLS, KC_SPACE)      // Symbols layer on hold, space on tap
 #define TAB_MOUS LT(_MOUSE, KC_TAB)         // Mouse layer on hold, tab on tap
 
 // Mod tap keys
@@ -38,10 +42,9 @@ enum layers {
     _NUMBERS,
     _NAVIGATION,
     _MOUSE,
-    // _MACRO,
-    // _FUN,
-    // _QWERTY,
-    // _GAMING,
+    _FUNCTION,
+    _GAME1,
+    _GAME2,
 };
 
 
@@ -53,9 +56,9 @@ const key_override_t volume_down_override = ko_make_basic(MOD_MASK_SHIFT, KC_VOL
 const key_override_t volume_up_override = ko_make_basic(MOD_MASK_SHIFT, KC_VOLU, KC_BRIU);   // Shift + volume up = brightness up
 
 // on colemak layer only
-const key_override_t comma_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_SCLN, 1 << 1);         // Shift + , = ;
-const key_override_t dot_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_COLN, 1 << 1);            // Shift + . = :
-const key_override_t question_mark_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_QUES, KC_EXLM, 1 << 1); // Shift +  ? = !
+const key_override_t comma_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_SCLN, 1 << 0);         // Shift + , = ;
+const key_override_t dot_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_COLN, 1 << 0);            // Shift + . = :
+const key_override_t question_mark_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_QUES, KC_EXLM, 1 << 0); // Shift +  ? = !
 
 // This globally defines all key overrides to be used
 const key_override_t *key_overrides[] = {
@@ -64,7 +67,6 @@ const key_override_t *key_overrides[] = {
     &comma_override,
     &dot_override,
     &question_mark_override,
-    NULL // Null terminate the array of overrides!
 };
 
 // ----------------------------------------------------------------------------------------------------
@@ -76,13 +78,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
      XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,                                            XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,KC_F    ,KC_P    ,KC_D    ,KC_L    ,KC_X    ,XXXXXXX ,                          XXXXXXX ,KC_Z    ,KC_U    ,KC_O    ,KC_Y    ,KC_B    ,XXXXXXX ,
+     KC_VOLU ,KC_F    ,KC_P    ,KC_D    ,KC_L    ,KC_X    ,XXXXXXX ,                          XXXXXXX ,KC_Q    ,KC_U    ,KC_O    ,KC_Y    ,KC_B    ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,GUI_S   ,ALT_N   ,CTRL_T  ,SHIFT_H ,KC_K    ,XXXXXXX ,                          XXXXXXX ,KC_Q    ,SHIFT_A ,CTRL_E  ,ALT_I   ,GUI_C   ,XXXXXXX ,
+     KC_VOLD ,GUI_S   ,ALT_N   ,CTRL_T  ,SHIFT_H ,KC_K    ,XXXXXXX ,                          XXXXXXX ,KC_Z    ,SHIFT_A ,CTRL_E  ,ALT_I   ,GUI_C   ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,KC_V    ,KC_W    ,KC_G    ,KC_M    ,KC_J    ,XXXXXXX ,XXXXXXX ,        XXXXXXX ,XXXXXXX ,KC_MINUS,KC_COMM ,KC_DOT  ,KC_QUES ,KC_QUOTE,XXXXXXX ,
+     KC_MUTE ,KC_V    ,KC_W    ,KC_G    ,KC_M    ,KC_J    ,XXXXXXX ,XXXXXXX ,        XXXXXXX ,XXXXXXX ,KC_MINUS,KC_COMM ,KC_DOT  ,KC_QUES ,KC_QUOTE,RGB_TOGG,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,     KC_R        ,BSPC_NUM,ESC_SYM ,        ENT_SYM ,SPC_NAV ,    TAB_MOUS     ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
+     DF_GAME1,XXXXXXX ,XXXXXXX ,XXXXXXX ,     KC_R        ,BSPC_SYM,ESC_NUM ,        ENT_NAV ,SPC_SYM ,    TAB_MOUS     ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
@@ -110,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,        XXXXXXX ,XXXXXXX ,KC_MINUS,KC_7    ,KC_8    ,KC_9    ,KC_SLASH,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,     _______     ,_______ ,_______ ,        _______ ,_______ ,    _______      ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
+     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,     _______     ,_______ ,_______ ,        MO_FUN  ,_______ ,    _______      ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
@@ -142,7 +144,49 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
-    // select all, Copy, cut, paste, paste no styles
+    [_FUNCTION] = LAYOUT(
+  //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
+     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,                                            XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,                          XXXXXXX ,XXXXXXX ,KC_F4   ,KC_F5   ,KC_F6   ,KC_F11  ,XXXXXXX ,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,                          XXXXXXX ,XXXXXXX ,KC_F10  ,KC_F1   ,KC_F2   ,KC_F3   ,XXXXXXX ,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,        XXXXXXX ,XXXXXXX ,XXXXXXX ,KC_F7   ,KC_F8   ,KC_F9   ,KC_F12  ,XXXXXXX ,
+  //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
+     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,     _______     ,_______ ,_______ ,        _______ ,_______ ,    _______      ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
+  //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
+  ),
+
+     [_GAME1] = LAYOUT(
+  //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
+     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,                                            XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     XXXXXXX ,KC_TAB  ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,XXXXXXX ,                          XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     KC_Z    ,KC_CAPS ,KC_A    ,KC_S    ,KC_D    ,KC_F    ,KC_G    ,                          XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     KC_LCTL ,KC_LSFT ,KC_X    ,KC_C    ,KC_V    ,KC_T    ,XXXXXXX ,XXXXXXX ,        XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+  //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
+     DF_ALPHA,XXXXXXX ,XXXXXXX ,XXXXXXX ,     MO_GAME2     ,KC_SPC ,KC_ESC  ,        XXXXXXX ,XXXXXXX ,    XXXXXXX      ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
+  //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
+  ),
+
+      [_GAME2] = LAYOUT(
+  //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
+     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,                                            XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,                          XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     KC_5    ,KC_4    ,KC_3    ,KC_2    ,KC_1    ,XXXXXXX ,XXXXXXX ,                          XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,        XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+  //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
+     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,     _______     ,_______ ,XXXXXXX ,        XXXXXXX ,XXXXXXX ,    XXXXXXX      ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
+  //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
+  ),
+
+  // select all, Copy, cut, paste, paste no styles
     // zoom in, out, 100%
     // screen shot, screen clip, screen recording
     // bold, italic, underline
@@ -171,7 +215,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // //├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐                         ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
   //    KC_TAB  ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T   ,TG_QWRTY,                          RGB_TOGG,KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    ,XXXXXXX,
   // //├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤                         ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-  //    KC_CAPS ,KC_A    ,KC_S    ,KC_D    ,KC_F    ,KC_G   ,KC_VOLD ,                          KC_VOLU ,KC_H    ,KC_J    ,KC_K    ,KC_L    ,KC_SCLN ,XXXXXXX,
+  //    KC_CAPS XuC_A    ,KC_S    ,KC_D    ,KC_F    ,KC_G   ,KC_VOLD ,                          KC_VOLU ,KC_H    ,KC_J    ,KC_K    ,KC_L    ,KC_SCLN ,XXXXXXX,
   // //├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐       ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
   //    KC_LSFT ,KC_Z    ,KC_X    ,KC_C    ,KC_V    ,KC_B   ,XXXXXXX ,XXXXXXX ,        XXXXXXX, XXXXXXX ,KC_N    ,KC_M    ,KC_COMM ,KC_DOT  ,KC_SLSH ,KC_RSFT,
   // //├─────────┼─────────┼─────────┼─────────┼────┬────┴────┬────┼─────────┼─────────┤       ├─────────┼─────────┼────┬────┴────┬────┼─────────┼─────────┼─────────┼─────────┤
@@ -196,20 +240,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // ----------------------------------------------------------------------------------------------------
 // LIGHTING
-void keyboard_post_init_user(void) {
-    // Ensure the RGB light matches the current layer on startup
-    rgblight_setrgb(RGB_WHITE);
-}
 
 // Set the RGB underglow color based on the active layer
 layer_state_t layer_state_set_user(layer_state_t state) {
+    rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
     switch (get_highest_layer(state)) {
         case _ALPHABET:
             rgblight_setrgb(RGB_GOLDENROD);
             break;
-        // case _QWERTY:
-        //     rgblight_setrgb(RGB_TEAL);
-        //     break;
         case _SYMBOLS:
             rgblight_setrgb(RGB_PINK);
             break;
@@ -222,11 +260,21 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         case _MOUSE:
             rgblight_setrgb(RGB_MAGENTA);
             break;
+        case _GAME1:
+        case _GAME2:
+            rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
+            break;
         default:
+            rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
             rgblight_setrgb(RGB_WHITE); // White for any other undefined layers
             break;
     }
     return state;
+}
+
+void keyboard_post_init_user(void) {
+    // Ensure RGB lighting corresponds to the current layer on startup
+    layer_state_set_user(layer_state);
 }
 
 // Change the color of the RGB underglow when mod-tap keys are pressed
@@ -235,6 +283,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case RGB_TOGG:
             if (record->event.pressed) {
                 rgblight_toggle();
+                layer_state_set_user(layer_state);
+            }
+            break;
+        case DF_GAME1:
+            if(record->event.pressed) {
+                rgblight_mode(RGBLIGHT_MODE_RAINBOW_SWIRL);
+            }
+            break;
+        case DF_ALPHA:
+            if(record->event.pressed) {
+                layer_state_set_user(layer_state);
             }
             break;
         case SHIFT_H:
