@@ -1,3 +1,9 @@
 KEY_OVERRIDE_ENABLE = yes
 MOUSEKEY_ENABLE = yes
 RGBLIGHT_ENABLE = yes
+
+# Reduce firmware size:
+LTO_ENABLE = yes
+MAGIC_ENABLE = no
+GRAVE_ESC_ENABLE = no
+SPACE_CADET_ENABLE = no
