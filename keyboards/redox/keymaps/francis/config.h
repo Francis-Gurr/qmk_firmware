@@ -29,3 +29,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_VAL_STEP 8
 
 #define TAPPING_TOGGLE 2      // Toggle on just 2 taps
+
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD

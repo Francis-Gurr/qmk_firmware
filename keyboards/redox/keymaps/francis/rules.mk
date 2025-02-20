@@ -1,6 +1,8 @@
 KEY_OVERRIDE_ENABLE = yes
 MOUSEKEY_ENABLE = yes
 RGBLIGHT_ENABLE = yes
+CAPS_WORD_ENABLE = yes
+COMMAND_ENABLE = no
 
 # Reduce firmware size:
 LTO_ENABLE = yes

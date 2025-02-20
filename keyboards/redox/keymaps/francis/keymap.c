@@ -21,9 +21,9 @@
 #define GUI_S GUI_T(KC_S)   // S on tap, GUI on hold
 #define ALT_N ALT_T(KC_N)   // N on tap, ALT on hold
 #define CTRL_T CTL_T(KC_T)  // T on tap, CTRL on hold
-#define SHIFT_H SFT_T(KC_H) // H on tap, SHIFT on hold
+#define SHIFT_H LSFT_T(KC_H) // H on tap, SHIFT on hold
 // Right hand
-#define SHIFT_A SFT_T(KC_A) // A on tap, SHIFT on hold
+#define SHIFT_A RSFT_T(KC_A) // A on tap, SHIFT on hold
 #define CTRL_E CTL_T(KC_E)  // E on tap, CTRL on hold
 #define ALT_I  ALT_T(KC_I)  // I on tap, ALT on hold
 #define GUI_C GUI_T(KC_C)   // C on tap, GUI on hold
